@@ -24,39 +24,27 @@ Predict the linear regression using regr.predict()method and display the result
 ```
 #Developed by: RAAGAVI R M
 #Register number: 212224220074
-import numpy as np
-
-# Coefficients and intercept
-coefficients = np.array([0.00755095, 0.00780526])
-intercept = 79.69471929115939
-
-# Print coefficients and intercept in the specified format
-print(f"Coefficients: {list(coefficients)}")
-print(f"Intercept: {intercept}")
-
-# Define weight and volume
-weight = 2000  # Example weight
-volume = 1500  # Example volume
-
-# Create a feature array
-input_features = np.array([weight, volume])
-
-# Predicted CO2 calculation
-predicted_co2 = np.dot(coefficients, input_features) + intercept
-
-print(f"\nPredicted CO2 for the corresponding weight  and volume : {predicted_co2}")
-
+import pandas as pd
+from sklearn import linear_model
+df=pd.read_csv("car.csv")
+x=df[['Weight','Volume']]
+y=df['CO2']
+regr=linear_model.LinearRegression()
+regr.fit(x,y)
+print('Coefficients:',regr.coef_)
+print('Intercept:',regr.intercept_)
+predictedCO2=regr.predict([[3300,1300]])
+print('PredictedCO2 for the corresponding Weight and Volume : ',predictedCO2)
 ```
 ## Output:
 ```
-coefficients: [0.00755095 0.00780526]
+Coefficients: [0.00755095 0.00780526]
 Intercept: 79.69471929115939
-Predicted co2 for the coressponding weight and volume [111.71387014]
+PredictedCO2 for the corresponding Weight and Volume :  [114.75968007]
 ```
 ### Insert your output
 
-<img width="732" height="97" alt="image" src="https://github.com/user-attachments/assets/ec19fbab-babd-4fca-a4d2-0713fa063f18" />
-
+<img width="775" height="346" alt="image" src="https://github.com/user-attachments/assets/099f88a6-f601-4ac8-942a-7f7cdc7f7786" />
 
 ## Result
 Thus the multivariate linear regression is implemented and predicted the output using python program.
